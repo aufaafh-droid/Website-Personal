@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengingat Aubrey</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Outer Wrapper -->
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Pengingat Aubrey</span>
+          <span class="logo-subtitle">Semangat Belajar Cantik</span>
+        </div>
+      </div>
+      
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="dashboard">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="nav-label">Dasbor</span>
+        </button>
+        <button class="nav-item" data-tab="timer">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="nav-label">Timer Belajar</span>
+        </button>
+        <button class="nav-item" data-tab="jadwal">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h8"/></svg>
+          <span class="nav-label">Jadwal Kuliah</span>
+        </button>
+        <button class="nav-item" data-tab="tugas">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span class="nav-label">Deadline Tugas</span>
+        </button>
+        <button class="nav-item" data-tab="siklus" id="nav-siklus-btn">
+          <svg class="icon" id="nav-siklus-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9Z"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M12 7v3"/><path d="M12 14v3"/><path d="M7 12h3"/><path d="M14 12h3"/></svg>
+          <span class="nav-label" id="nav-siklus-label">Kesehatan Siklus</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="theme-toggle-container">
+          <button id="theme-toggle-btn" class="theme-btn" title="Ganti Tema">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            <span class="theme-label">Tema Gelap</span>
+          </button>
+        </div>
+        
+        <!-- Privacy Mode Quick Button -->
+        <button id="privacy-toggle-btn" class="privacy-btn" title="Aktifkan Mode Privasi (Sembunyikan Data Kesehatan)">
+          <svg class="icon eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg class="icon eye-off-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="display:none;"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+          <span class="privacy-label">Mode Privasi</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Bar / Header -->
+      <header class="top-bar">
+        <div class="greeting-container">
+          <h1 id="top-title">Halo, Selamat Belajar Sayang</h1>
+          <p id="top-subtitle">Semoga Hari Ini Hari Yang Baik yaa</p>
+        </div>
+        <div class="time-widget" id="realtime-clock">
+          <div class="clock-time">09:00:00</div>
+          <div class="clock-date">Jumat, 29 Mei 2026</div>
+        </div>
+      </header>
+
+      <!-- Content Container -->
+      <div class="content-body">
+        
+        <!-- ================= TAB 1: DASHBOARD ================= -->
+        <section id="tab-dashboard" class="tab-pane active">
+          <!-- Welcome Alert Banner -->
+          <div class="welcome-banner">
+            <div class="banner-content">
+              <h2>Selamat Datang di Remainder By Aufaa</h2>
+              <p>Tempat Untuk mengatur waktu, Tugas Kuliah, dan Kalender Mens</p>
+            </div>
+            <div class="banner-action">
+              <button class="btn btn-primary" onclick="switchTab('timer')">Mulai Belajar Sekarang</button>
+            </div>
+          </div>
+
+          <!-- Dashboard Grid -->
+          <div class="dashboard-grid">
+            
+            <!-- Card 1: Study Timer Quick Stats -->
+            <div class="dashboard-card card-timer">
+              <div class="card-header">
+                <h3>Timer Belajar</h3>
+                <span class="badge badge-amber">mau beajar berapa lama?</span>
+              </div>
+              <div class="card-body">
+                <div class="timer-preview">
+                  <div class="timer-preview-circle">
+                    <span id="dash-timer-time">25:00</span>
+                  </div>
+                  <div class="timer-preview-text">
+                    <p class="status-label" id="dash-timer-status">Santai dulu</p>
+                    <p class="sub-label" id="dash-timer-stat">Fokus hari ini: <strong id="dash-total-focus">0 menit</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-outline-amber" onclick="switchTab('timer')">Buka Timer</button>
+              </div>
+            </div>
+
+            <!-- Card 2: Next Class -->
+            <div class="dashboard-card card-schedule">
+              <div class="card-header">
+                <h3>Kuliah Berikutnya</h3>
+                <span class="badge badge-indigo">Hari Ini</span>
+              </div>
+              <div class="card-body" id="dash-next-class-body">
+                <!-- Will be dynamically generated -->
+                <div class="empty-state">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  <p>Tidak ada kuliah terjadwal untuk hari ini.</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-outline-indigo" onclick="switchTab('jadwal')">Lihat Semua Jadwal</button>
+              </div>
+            </div>
+
+            <!-- Card 3: Deadlines -->
+            <div class="dashboard-card card-tugas">
+              <div class="card-header">
+                <h3>Tugas Mendatang</h3>
+                <span class="badge badge-teal" id="dash-tugas-count">0 Tugas</span>
+              </div>
+              <div class="card-body" id="dash-tugas-body">
+                <!-- Will be dynamically generated -->
+                <div class="empty-state">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                  <p>Hore! Semua tugasmu sudah selesai dikerjakan.</p>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-outline-teal" onclick="switchTab('tugas')">Kelola Tugas</button>
+              </div>
+            </div>
+
+            <!-- Card 4: Health Cycle Summary -->
+            <div class="dashboard-card card-health" id="dash-health-card">
+              <div class="card-header">
+                <h3 id="dash-health-title">Kesehatan Siklus</h3>
+                <span class="badge badge-rose" id="dash-health-badge">Siklus</span>
+              </div>
+              <div class="card-body" id="dash-health-body">
+                <div class="cycle-summary-layout">
+                  <div class="cycle-avatar">
+                    <span id="dash-cycle-day">--</span>
+                    <span class="sub">Hari ke</span>
+                  </div>
+                  <div class="cycle-text">
+                    <p class="cycle-status" id="dash-cycle-status">Menghitung data...</p>
+                    <p class="cycle-next-date" id="dash-cycle-next">Tanggal prediksi: --</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-outline-rose" id="dash-health-btn" onclick="switchTab('siklus')">Buka Kalender</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= TAB 2: TIMER BELAJAR ================= -->
+        <section id="tab-timer" class="tab-pane">
+          <div class="timer-layout">
+            <div class="timer-left">
+              <!-- Visual Timer Container -->
+              <div class="timer-visual-container">
+                <svg class="progress-ring" width="300" height="300">
+                  <circle class="progress-ring-bg" stroke="var(--bg-card)" stroke-width="12" fill="transparent" r="130" cx="150" cy="150"/>
+                  <circle id="timer-progress" class="progress-ring-fg" stroke="var(--timer-accent)" stroke-width="12" stroke-dasharray="816.8" stroke-dashoffset="0" fill="transparent" r="130" cx="150" cy="150" stroke-linecap="round"/>
+                </svg>
+                <div class="timer-display-inner">
+                  <span id="timer-countdown">25:00</span>
+                  <span id="timer-state-label">Fokus Belajar</span>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="timer-controls">
+                <button class="btn-timer btn-timer-sec" id="timer-reset" title="Ulangi Timer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </button>
+                <button class="btn-timer btn-timer-main" id="timer-start" title="Mulai / Jeda">
+                  <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+                <button class="btn-timer btn-timer-sec" id="timer-skip" title="Lewati Sesi">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" x2="19" y1="5" y2="19"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="timer-right">
+              <!-- Mode Selection -->
+              <div class="glass-card timer-settings">
+                <h3>Atur Waktu Pomodoro</h3>
+                <div class="timer-mode-buttons">
+                  <button class="btn-mode active" data-mode="focus">Belajar (25m)</button>
+                  <button class="btn-mode" data-mode="shortBreak">Rehat Singkat (5m)</button>
+                  <button class="btn-mode" data-mode="longBreak">Rehat Lama (15m)</button>
+                </div>
+                
+                <div class="custom-timer-inputs">
+                  <h4>Kustom Durasi (Menit):</h4>
+                  <div class="custom-inputs-row">
+                    <div class="input-field">
+                      <label>Fokus</label>
+                      <input type="number" id="custom-focus" min="1" max="180" value="25">
+                    </div>
+                    <div class="input-field">
+                      <label>Rehat 1</label>
+                      <input type="number" id="custom-short" min="1" max="60" value="5">
+                    </div>
+                    <div class="input-field">
+                      <label>Rehat 2</label>
+                      <input type="number" id="custom-long" min="1" max="120" value="15">
+                    </div>
+                  </div>
+                  <button class="btn btn-sm btn-primary w-full mt-3" id="apply-custom-durations">Terapkan Durasi</button>
+                </div>
+              </div>
+
+              <!-- Lofi Ambient Sounds -->
+              <div class="glass-card ambient-sounds-card">
+                <h3>Suara Latar (Ambient)</h3>
+                <p class="subtitle">Bantu tingkatkan kefokusan pikiran Anda</p>
+                <div class="ambient-grid">
+                  <button class="btn-ambient" data-sound="rain">
+                    <span class="icon">🌧️</span>
+                    <span class="label">Suara Hujan</span>
+                  </button>
+                  <button class="btn-ambient" data-sound="lofi">
+                    <span class="icon">🎹</span>
+                    <span class="label">Lofi Chill</span>
+                  </button>
+                  <button class="btn-ambient" data-sound="forest">
+                    <span class="icon">🌲</span>
+                    <span class="label">Hutan Alam</span>
+                  </button>
+                  <button class="btn-ambient" data-sound="noise">
+                    <span class="icon">💨</span>
+                    <span class="label">White Noise</span>
+                  </button>
+                </div>
+                <div class="ambient-control-bar" style="display:none;" id="ambient-player-bar">
+                  <span id="playing-sound-label">Memutar: Hujan</span>
+                  <div class="audio-control-row">
+                    <button id="toggle-ambient-play" class="btn btn-sm btn-circle">⏸️</button>
+                    <input type="range" id="ambient-volume" min="0" max="1" step="0.1" value="0.5" title="Volume">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Session History -->
+              <div class="glass-card history-card">
+                <h3>Riwayat Belajar Hari Ini</h3>
+                <ul class="history-list" id="focus-history-list">
+                  <li class="empty-history">Belum ada sesi fokus yang diselesaikan hari ini. Semangat!</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= TAB 3: JADWAL KULIAH ================= -->
+        <section id="tab-jadwal" class="tab-pane">
+          <div class="section-header">
+            <div class="header-text">
+              <h2>Jadwal Kuliah Mingguan</h2>
+              <p>Kelola seluruh mata kuliahmu secara visual dan teratur.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('modal-add-class')">+ Tambah Kuliah</button>
+          </div>
+
+          <div class="schedule-weekly-layout">
+            <!-- Day Columns Grid -->
+            <div class="schedule-grid">
+              
+              <!-- Hari Senin -->
+              <div class="day-column" data-day="Senin">
+                <div class="day-header">
+                  <h3>Senin</h3>
+                </div>
+                <div class="class-cards-container" id="day-Senin-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Selasa -->
+              <div class="day-column" data-day="Selasa">
+                <div class="day-header">
+                  <h3>Selasa</h3>
+                </div>
+                <div class="class-cards-container" id="day-Selasa-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Rabu -->
+              <div class="day-column" data-day="Rabu">
+                <div class="day-header">
+                  <h3>Rabu</h3>
+                </div>
+                <div class="class-cards-container" id="day-Rabu-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Kamis -->
+              <div class="day-column" data-day="Kamis">
+                <div class="day-header">
+                  <h3>Kamis</h3>
+                </div>
+                <div class="class-cards-container" id="day-Kamis-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Jumat -->
+              <div class="day-column" data-day="Jumat">
+                <div class="day-header">
+                  <h3>Jumat</h3>
+                </div>
+                <div class="class-cards-container" id="day-Jumat-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Sabtu -->
+              <div class="day-column" data-day="Sabtu">
+                <div class="day-header">
+                  <h3>Sabtu</h3>
+                </div>
+                <div class="class-cards-container" id="day-Sabtu-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+              <!-- Hari Minggu -->
+              <div class="day-column" data-day="Minggu">
+                <div class="day-header">
+                  <h3>Minggu</h3>
+                </div>
+                <div class="class-cards-container" id="day-Minggu-container">
+                  <!-- Dynamic cards -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= TAB 4: DEADLINE TUGAS ================= -->
+        <section id="tab-tugas" class="tab-pane">
+          <div class="section-header">
+            <div class="header-text">
+              <h2>Manajemen Tugas & Deadline</h2>
+              <p>Pantau deadline tugasmu dengan visualisasi tenggat waktu hitung mundur waktu nyata.</p>
+            </div>
+            <button class="btn btn-teal" onclick="openModal('modal-add-task')">+ Tambah Tugas Baru</button>
+          </div>
+
+          <!-- Task Layout -->
+          <div class="task-manager-container">
+            <!-- Filter Bar -->
+            <div class="task-filters glass-card">
+              <div class="search-input">
+                <input type="text" id="task-search-input" placeholder="Cari nama tugas atau matakuliah...">
+              </div>
+              <div class="filter-dropdowns">
+                <select id="filter-priority" class="filter-select">
+                  <option value="all">Semua Prioritas</option>
+                  <option value="tinggi">Tinggi 🔴</option>
+                  <option value="sedang">Sedang 🟡</option>
+                  <option value="rendah">Rendah 🟢</option>
+                </select>
+                <select id="filter-sort" class="filter-select">
+                  <option value="closest">Tenggat Terdekat</option>
+                  <option value="furthest">Tenggat Terjauh</option>
+                  <option value="priority">Prioritas Tertinggi</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Kanban Board (3 Columns) -->
+            <div class="kanban-board">
+              <!-- Belum Mulai -->
+              <div class="kanban-column" id="col-todo">
+                <div class="column-header border-red">
+                  <h3>Belum Mulai</h3>
+                  <span class="count-badge" id="count-todo">0</span>
+                </div>
+                <div class="kanban-cards" id="cards-todo" ondragover="allowDrop(event)" ondrop="dropTask(event, 'todo')">
+                  <!-- Tasks -->
+                </div>
+              </div>
+
+              <!-- Sedang Dikerjakan -->
+              <div class="kanban-column" id="col-progress">
+                <div class="column-header border-orange">
+                  <h3>Sedang Dikerjakan</h3>
+                  <span class="count-badge" id="count-progress">0</span>
+                </div>
+                <div class="kanban-cards" id="cards-progress" ondragover="allowDrop(event)" ondrop="dropTask(event, 'progress')">
+                  <!-- Tasks -->
+                </div>
+              </div>
+
+              <!-- Selesai -->
+              <div class="kanban-column" id="col-done">
+                <div class="column-header border-green">
+                  <h3>Selesai</h3>
+                  <span class="count-badge" id="count-done">0</span>
+                </div>
+                <div class="kanban-cards" id="cards-done" ondragover="allowDrop(event)" ondrop="dropTask(event, 'done')">
+                  <!-- Tasks -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= TAB 5: KALENDER MENS & KESEHATAN ================= -->
+        <section id="tab-siklus" class="tab-pane">
+          <div class="section-header">
+            <div class="header-text">
+              <h2 id="health-page-title">Pelacak Kesehatan Siklus Bulanan</h2>
+              <p id="health-page-subtitle">Pantau siklus datang bulan, masa subur, serta log gejala fisik harian secara mandiri.</p>
+            </div>
+            <button class="btn btn-rose" id="btn-privacy-hint" onclick="togglePrivacyMode()">
+              🛡️ Aktifkan Mode Privasi (Samarkan UI)
+            </button>
+          </div>
+
+          <div class="cycle-tracker-layout">
+            
+            <!-- Left Side: Calendar and Setup -->
+            <div class="cycle-left">
+              
+              <!-- Parameters Setup -->
+              <div class="glass-card cycle-params-card">
+                <h3>Pengaturan Siklus</h3>
+                <div class="params-grid">
+                  <div class="input-field">
+                    <label for="last-period-date">Mulai Menstruasi Terakhir:</label>
+                    <input type="date" id="last-period-date">
+                  </div>
+                  <div class="input-field">
+                    <label for="cycle-length">Panjang Siklus (Rata-rata Hari):</label>
+                    <input type="number" id="cycle-length" min="15" max="50" value="28">
+                  </div>
+                  <div class="input-field">
+                    <label for="period-length">Durasi Haid (Hari):</label>
+                    <input type="number" id="period-length" min="2" max="15" value="5">
+                  </div>
+                </div>
+                <button class="btn btn-primary mt-3 w-full" id="save-cycle-params">Simpan & Hitung Prediksi</button>
+              </div>
+
+              <!-- Interactive Calendar -->
+              <div class="glass-card cycle-calendar-card">
+                <div class="calendar-nav">
+                  <button class="btn-cal-nav" id="prev-month-btn">◀</button>
+                  <h3 id="calendar-month-year">Mei 2026</h3>
+                  <button class="btn-cal-nav" id="next-month-btn">▶</button>
+                </div>
+                
+                <div class="calendar-grid">
+                  <!-- Header Days -->
+                  <div class="calendar-day-header">Sen</div>
+                  <div class="calendar-day-header">Sel</div>
+                  <div class="calendar-day-header">Rab</div>
+                  <div class="calendar-day-header">Kam</div>
+                  <div class="calendar-day-header">Jum</div>
+                  <div class="calendar-day-header">Sab</div>
+                  <div class="calendar-day-header">Min</div>
+                  
+                  <!-- Dates Grid Container -->
+                  <div class="calendar-days-container" id="calendar-days-grid">
+                    <!-- Dynamic calendar grid dates -->
+                  </div>
+                </div>
+
+                <!-- Calendar Legend -->
+                <div class="calendar-legend" id="cycle-legend-list">
+                  <div class="legend-item"><span class="dot dot-period"></span> <span class="legend-label" data-type="period">Menstruasi</span></div>
+                  <div class="legend-item"><span class="dot dot-fertile"></span> <span class="legend-label" data-type="fertile">Masa Subur</span></div>
+                  <div class="legend-item"><span class="dot dot-ovulation"></span> <span class="legend-label" data-type="ovulation">Hari Ovulasi</span></div>
+                  <div class="legend-item"><span class="dot dot-logged"></span> <span class="legend-label" data-type="logged">Gejala Terbaca</span></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Daily Symptoms Logging -->
+            <div class="cycle-right">
+              
+              <!-- Cycle Status Details -->
+              <div class="glass-card cycle-details-card">
+                <h3>Analisis & Prediksi Siklus</h3>
+                <div class="analysis-box">
+                  <div class="analysis-item">
+                    <span class="label">Siklus Berikutnya Diperkirakan:</span>
+                    <span class="value" id="cycle-next-period">--</span>
+                  </div>
+                  <div class="analysis-item">
+                    <span class="label">Fase Masa Subur Berikutnya:</span>
+                    <span class="value" id="cycle-next-fertile">--</span>
+                  </div>
+                  <div class="analysis-item">
+                    <span class="label">Sisa Hari Menuju Siklus Baru:</span>
+                    <span class="value badge-highlight" id="cycle-countdown-days">--</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Log Symptoms Form -->
+              <div class="glass-card log-symptoms-card">
+                <div class="symptom-header">
+                  <h3>Catatan Gejala & Mood</h3>
+                  <span class="badge" id="selected-log-date">Pilih tanggal di kalender</span>
+                </div>
+                <div class="symptoms-selector-container">
+                  <h4>Bagaimana kondisi tubuhmu hari ini?</h4>
+                  
+                  <div class="symptoms-section">
+                    <h5>Gejala Fisik:</h5>
+                    <div class="checkbox-grid">
+                      <label class="check-item">
+                        <input type="checkbox" name="symptom" value="kram">
+                        <span class="box-label">Kram Perut ⚡</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="symptom" value="pusing">
+                        <span class="box-label">Sakit Kepala 🧠</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="symptom" value="lelah">
+                        <span class="box-label">Sangat Lelah 😴</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="symptom" value="nyeri-payudara">
+                        <span class="box-label">Nyeri Payudara 🌸</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="symptom" value="jerawat">
+                        <span class="box-label">Timbul Jerawat 🔴</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="symptoms-section mt-3">
+                    <h5>Mood / Suasana Hati:</h5>
+                    <div class="checkbox-grid">
+                      <label class="check-item">
+                        <input type="checkbox" name="mood" value="senang">
+                        <span class="box-label">Ceria & Energik 😊</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="mood" value="sensitif">
+                        <span class="box-label">Mudah Marah/Sensitif ⚡</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="mood" value="sedih">
+                        <span class="box-label">Sedih & Cemas 🥺</span>
+                      </label>
+                      <label class="check-item">
+                        <input type="checkbox" name="mood" value="tenang">
+                        <span class="box-label">Santai & Tenang 🧘‍♀️</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-sm btn-primary w-full mt-4" id="save-daily-log-btn" disabled>Simpan Catatan Harian</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ================= MODAL DIALOGS ================= -->
+  
+  <!-- 1. Modal: Tambah Kuliah -->
+  <div class="modal-overlay" id="modal-add-class">
+    <div class="modal-box glass-card">
+      <div class="modal-header">
+        <h3>Tambah Jadwal Kuliah</h3>
+        <button class="btn-close-modal" onclick="closeModal('modal-add-class')">×</button>
+      </div>
+      <form id="form-add-class" onsubmit="addClassSubmit(event)">
+        <div class="modal-body">
+          <div class="input-field">
+            <label for="class-name">Nama Mata Kuliah *</label>
+            <input type="text" id="class-name" required placeholder="Contoh: Kalkulus II">
+          </div>
+          <div class="input-field">
+            <label for="class-professor">Dosen Pengampu</label>
+            <input type="text" id="class-professor" placeholder="Contoh: Dr. Budi Santoso">
+          </div>
+          <div class="modal-grid-row">
+            <div class="input-field">
+              <label for="class-day">Hari *</label>
+              <select id="class-day" required>
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+                <option value="Sabtu">Sabtu</option>
+                <option value="Minggu">Minggu</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="class-color">Aksen Warna *</label>
+              <select id="class-color">
+                <option value="indigo">Indigo (Ungu)</option>
+                <option value="amber">Amber (Oranye)</option>
+                <option value="teal">Teal (Hijau Kebiruan)</option>
+                <option value="rose">Rose (Merah Muda)</option>
+                <option value="blue">Blue (Biru Terang)</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-grid-row">
+            <div class="input-field">
+              <label for="class-start">Jam Mulai *</label>
+              <input type="time" id="class-start" required>
+            </div>
+            <div class="input-field">
+              <label for="class-end">Jam Selesai *</label>
+              <input type="time" id="class-end" required>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="class-room">Ruang / Tautan Kelas</label>
+            <input type="text" id="class-room" placeholder="Contoh: Ruang 304, Gedung B atau Zoom Link">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-class')">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Kuliah</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Modal: Tambah Tugas -->
+  <div class="modal-overlay" id="modal-add-task">
+    <div class="modal-box glass-card">
+      <div class="modal-header">
+        <h3>Tambah Tugas Baru</h3>
+        <button class="btn-close-modal" onclick="closeModal('modal-add-task')">×</button>
+      </div>
+      <form id="form-add-task" onsubmit="addTaskSubmit(event)">
+        <div class="modal-body">
+          <div class="input-field">
+            <label for="task-title">Nama Tugas *</label>
+            <input type="text" id="task-title" required placeholder="Contoh: Laporan Praktikum Fisika">
+          </div>
+          <div class="input-field">
+            <label for="task-course">Mata Kuliah Terkait</label>
+            <input type="text" id="task-course" placeholder="Contoh: Praktikum Fisika Dasar">
+          </div>
+          <div class="modal-grid-row">
+            <div class="input-field">
+              <label for="task-due-date">Tanggal Tenggat *</label>
+              <input type="date" id="task-due-date" required>
+            </div>
+            <div class="input-field">
+              <label for="task-due-time">Waktu Tenggat *</label>
+              <input type="time" id="task-due-time" required value="23:59">
+            </div>
+          </div>
+          <div class="modal-grid-row">
+            <div class="input-field">
+              <label for="task-priority">Tingkat Prioritas *</label>
+              <select id="task-priority" required>
+                <option value="rendah">Rendah (Hijau)</option>
+                <option value="sedang" selected>Sedang (Oranye)</option>
+                <option value="tinggi">Tinggi (Merah)</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="task-column">Status Awal *</label>
+              <select id="task-column" required>
+                <option value="todo">Belum Mulai</option>
+                <option value="progress">Sedang Dikerjakan</option>
+                <option value="done">Selesai</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="task-notes">Catatan Tambahan</label>
+            <textarea id="task-notes" placeholder="Tulis catatan, instruksi, atau tautan pengumpulan di sini..." rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modal-add-task')">Batal</button>
+          <button type="submit" class="btn btn-teal">Simpan Tugas</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Web Audio Synthesizer status helper (non-blocking) -->
+  <div id="audio-synthesizer-indicator" class="audio-toast" style="display:none;"></div>
+
+  <!-- Link JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
